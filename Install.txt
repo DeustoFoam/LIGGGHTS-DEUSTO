@@ -1,0 +1,29 @@
+https://www.engineerdo.com/wp-content/uploads/2020/06/EngineerDo_Installation_liggghts.pdf
+
+sudo apt-get install ffmpeg
+
+sudo apt install openmpi-bin
+
+# sudo apt install git
+# git clone https://github.com/CFDEMproject/LIGGGHTS-PUBLIC.git
+# git clone https://github.com/DeustoFoam/LIGGGHTS-DEUSTO.git
+
+cd ~/LIGGGHTS-PUBLIC/src
+
+make auto
+
+gedit MAKE/Makefile.user
+    USE_VTK is set to "ON"
+    AUTOINSTALL_VTK = "ON"
+
+make auto
+
+generate the symbolic link:
+    sudo ln -s ~/LIGGGHTS-PUBLIC/src/lmp_auto /bin/lmp380
+    execute with lmp380
+
+IF LIGGGHTS does not start:
+    sudo gedit ~/../../etc/bash.bashrc
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/LIGGGHTS-PUBLIC/lib/vtk/install/lib/
+
+# sudo apt-get install -y paraview
